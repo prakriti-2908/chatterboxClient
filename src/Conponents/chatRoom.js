@@ -78,7 +78,7 @@ function ChatRoom() {
             socketRef.current.emit('disconnected', { msg: `${name} has disconnected`,room});
             socketRef.current.disconnect();
         };
-    }, []);
+    }, [msg, name, room]);
 
     function sendMessage(e) {
         e.preventDefault();
