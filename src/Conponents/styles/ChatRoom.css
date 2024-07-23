@@ -1,0 +1,104 @@
+.chatRoom {
+  width: 100vw;
+  height: 85vh;
+  /* display: grid;
+  grid-template-columns: 30% auto; */
+  overflow: hidden; /* Prevent scrolling on the entire chatRoom */
+}
+
+.chatRoomItems {
+  border: 1px solid black;
+}
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling in the container */
+}
+
+.messages {
+  display: flex;
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling within the messages area */
+  padding: 10px;
+  background: #f9f9f9; /* Optional: Add a background color for visibility */
+  box-sizing: border-box; /* Include padding in height calculation */
+  flex-direction: column;
+}
+.myMsg {
+  border: 1px solid black;
+  border-radius: 30px;
+  width: fit-content;
+  padding: 5px 20px;
+  color: white;
+  background-color: #4399FF;
+}
+
+
+.inputChatRoom {
+  position: sticky;
+  bottom: 0;
+  background: white; /* Add background to distinguish from messages */
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for separation */
+  z-index: 1; /* Ensure input stays on top of messages */
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+.inputChatRoom input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+.inputChatRoom button{
+  border-radius: 4px;
+  margin-left: 10px;
+  border: none;
+}
+#send {
+  padding: 10px;
+  background: #328cfa;
+  color: white;
+  cursor: pointer;
+}
+
+.roomName{
+  padding: 30px 0px;
+  width: 100vw;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+
+.automated{
+  color: red;
+  justify-content: center;
+}
+
+
+/* Media Query for tablets and smaller devices */
+@media (max-width: 768px) {
+  .roomName{
+    font-size: 10px;
+    padding: 10px 0px ;
+  }
+
+}
+
+/* Media Query for phones and very small devices */
+@media (max-width: 480px) {
+  .roomName{
+    font-size: 5px;
+    padding: 10px 0px ;
+  }
+  .messages{
+    p{
+      font-size: smaller !important;
+    }
+  }
+}
