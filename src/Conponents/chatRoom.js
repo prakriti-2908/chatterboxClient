@@ -12,19 +12,19 @@ function ChatRoom() {
     const { room, name } = useContext(RoomContext);
 
     useMemo(() => {
-        socketRef.current = io('https://chatterbox-nodeJs3129.onrender.com');
+        socketRef.current = io('http://localhost:8000/');
     }, []);
 
     useEffect(() => {
         socketRef.current.on('connect', () => {
-            socketRef.current.emit('join-room', { room, msg, name });
+            socketRef.current.emit('join-room', { room, name });
         });
 
         socketRef.current.on('leftNotification', (msg) => {
             messages.current.innerHTML += `<p style="color:red; font-weight:600; display:flex; justify-content: center;">${msg}</p>`;
         });
 
-        socketRef.current.on('welcome', (msg) => {
+        socketRef.current.on('welcome', () => {
             messages.current.innerHTML += `<p style="color:blue; font-weight:600; display:flex; justify-content: center;">Welcome ${name}</p>`;
         });
 
@@ -75,10 +75,10 @@ function ChatRoom() {
         });
 
         return () => {
-            socketRef.current.emit('disconnected', { msg: `${name} has disconnected`,room});
+            socketRef.current.emit('disconnected', { msg: `${name} has disconnected`, room });
             socketRef.current.disconnect();
         };
-    }, [msg, name, room]);
+    }, [name, room]);
 
     function sendMessage(e) {
         e.preventDefault();
