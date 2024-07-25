@@ -12,7 +12,7 @@ function ChatRoom() {
     const { room, name } = useContext(RoomContext);
 
     useMemo(() => {
-        socketRef.current = io('http://localhost:8000/');
+        socketRef.current = io('https://chatterbox-nodejs3129.onrender.com');
     }, []);
 
     useEffect(() => {
